@@ -1,0 +1,26 @@
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/build/
+/nbmetadata/
+/nbactions.xml
+/.nb-gradle/
+
+# IntelliJ IDEA
+.idea/
+
+# Build output
+*.class
+*.jar
+
+# Database files
+*.ibd
+*.frm
+*.MYD
+*.MYI
+
+# Logs
+*.log
+log/
+logs/

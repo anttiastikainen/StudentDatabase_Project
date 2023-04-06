@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="opiskelijarekisteri_app.CourseViewController">
+   <children>
+      <TabPane layoutY="25.0" prefHeight="280.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Uusi kurssi">
+               <content>
+                  <Pane fx:id="background1" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="15.0" layoutY="15.0" text="Lisää uusi kurssi:" />
+                        <Label layoutX="15.0" layoutY="50.0" text="Kurssi tunnus:" />
+                        <Label layoutX="15.0" layoutY="100.0" text="Kurssin nimi:" />
+                        <Label layoutX="15.0" layoutY="150.0" text="Laajuus:" />
+                        <TextField fx:id="tfCourseID" layoutX="100.0" layoutY="50.0" onKeyReleased="#checkForFill" promptText="ESI2001" />
+                        <TextField fx:id="tfCourseName" layoutX="100.0" layoutY="100.0" onKeyReleased="#checkForFill" promptText="Esimerkki kurssi" />
+                        <TextField fx:id="tfCourseCredits" layoutX="100.0" layoutY="150.0" onKeyReleased="#checkForFill" promptText="Opintopisteet" />
+                        <Button layoutX="360.0" layoutY="100.0" mnemonicParsing="false" onAction="#clearFields" text="Tyhjennä" />
+                        <Button fx:id="btnSaveCourse" disable="true" layoutX="280.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnSaveCourseClicked" text="Tallenna" />
+                        <Label fx:id="lblSaved" layoutX="190.0" layoutY="280.0" text="Tallennettu!" visible="false" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+          <Tab text="Muokkaa kurssia">
+               <content>
+                  <Pane fx:id="background2" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="15.0" layoutY="15.0" text="Päivitä tietoja:" />
+                        <Label layoutX="15.0" layoutY="40.0" text="Mitä kurssia muokataan?" />
+                        <TextField fx:id="tfNewCourseName" layoutX="130.0" layoutY="130.0" promptText="Kurssin nimi" />
+                        <TextField fx:id="tfNewCourseCredits" layoutX="130.0" layoutY="165.0" promptText="Opintopisteet" />
+                        <Button layoutX="180.0" layoutY="60.0" mnemonicParsing="false" onAction="#btnUpdateCoursesClicked" text="Päivitä tiedot" />
+                        <Label fx:id="lblCourseUpdated" layoutX="318.0" layoutY="135.0" visible="false" />
+                        <ComboBox fx:id="cbCourseID" layoutX="15.0" layoutY="60.0" prefWidth="150.0" promptText="KURSSI" />
+                        <Label layoutX="15.0" layoutY="130.0" text="Uusi kurssin nimi:" />
+                        <Label layoutX="15.0" layoutY="165.0" text="Uusi kurssin laajuus:" />
+                     </children>
+                  </Pane>
+               </content></Tab>
+            <Tab text="Poista kurssi">
+               <content>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Pane fx:id="background3" layoutX="-1.0" prefHeight="372.0" prefWidth="600.0">
+                           <children>
+                              <Label layoutX="15.0" layoutY="15.0" text="Poista kursseja:" />
+                              <Label layoutX="15.0" layoutY="40.0" text="Minkä kurssin tiedot haluat poistaa?" />
+                              <Button layoutX="180.0" layoutY="60.0" mnemonicParsing="false" onAction="#btnDeleteCourseClicked" text="Poista" />
+                              <Label fx:id="txtDeleteSuccess" layoutX="60.0" layoutY="100.0" text="Kurssin tiedot poistettu!" visible="false" />
+                              <ComboBox fx:id="cbCourseID2" layoutX="15.0" layoutY="60.0" prefWidth="150.0" promptText="KURSSI" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </content></Tab>
+        </tabs>
+      </TabPane>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="Tiedosto">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#closeClicked" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Muokkaa">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Taustaväri">
+                     <graphic>
+                        <ColorPicker fx:id="cpBackgroundColor" onAction="#cpBackgroundColorClicked" />
+                     </graphic>
+                  </MenuItem>
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#instructionsMenuItemClicked" text="Ohjeet" />
+                  <MenuItem mnemonicParsing="false" onAction="#aboutMenuItemClicked" text="Tietoja" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TextArea fx:id="taCourseList" editable="false" layoutY="330.0" prefHeight="220.0" prefWidth="600.0" />
+      <Label layoutX="27.0" layoutY="315.0" text="Kurssi tunnus">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="146.0" layoutY="315.0" text="Laajuus">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="265.0" layoutY="315.0" text="Kurssin nimi">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

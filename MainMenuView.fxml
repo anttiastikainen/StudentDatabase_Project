@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="opiskelijarekisteri_app.MainMenuViewController">
+    <children>
+      <VBox alignment="CENTER" layoutX="225.0" prefHeight="400.0" prefWidth="149.0" spacing="15.0">
+         <children>
+            <Button fx:id="btnStudent" mnemonicParsing="false" onAction="#btnStudentPressed" onMouseEntered="#showStudentHintBox" onMouseExited="#hideStudentHintBox" prefHeight="25.0" prefWidth="134.0" text="Opiskelijoiden tiedot">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnCourse" mnemonicParsing="false" onAction="#btnCoursePressed" onMouseEntered="#showCourseHintBox" onMouseExited="#hideCourseHitBox" text="Kurssin tiedot">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btnPerformance" mnemonicParsing="false" onAction="#btnPerformancePressed" onMouseEntered="#showPerformanceHintBox" onMouseExited="#hidePerformanceHintBox" text="Suoritukset">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btnExit" mnemonicParsing="false" onAction="#btnExitPressed" text="Poistu">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children>
+      </VBox>
+      <Label fx:id="txtStudentHint" layoutX="381.0" layoutY="111.0" prefHeight="53.0" prefWidth="269.0" text="Lisää, muokkaa ja poista opiskelijoita tietokannasta." visible="false" wrapText="true" />
+      <Label fx:id="txtCourseHint" layoutX="359.0" layoutY="165.0" prefHeight="39.0" prefWidth="269.0" text="Lisää, muokkaa ja poista kursseja tietokannasta." visible="false" wrapText="true" />
+      <Label fx:id="txtPerformanceHint" layoutX="359.0" layoutY="204.0" prefHeight="39.0" prefWidth="269.0" text="Lisää, muokkaa ja poista opiskelijoiden suorituksia tietokannasta." visible="false" wrapText="true" />
+    </children>
+</AnchorPane>

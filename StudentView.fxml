@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="opiskelijarekisteri_app.StudentViewController">
+   <children>
+      <TabPane layoutY="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="Tietojen Lisäys">
+               <content>
+                  <Pane fx:id="background1" maxHeight="320.0" prefHeight="320.0" prefWidth="600.0">
+                     <children>
+                        <Pane layoutX="1.0" layoutY="-2.0" prefHeight="280.0" prefWidth="600.0">
+                           <children>
+                              <Label layoutX="15.0" layoutY="50.0" text="Opiskelijan etunimi:" />
+                              <Label layoutX="15.0" layoutY="150.0" text="Opiskelija nro:" />
+                              <Label layoutX="337.0" layoutY="50.0" text="Osoite:" />
+                              <TextField fx:id="tfStdntFirstname" layoutX="140.0" layoutY="50.0" onKeyReleased="#checkForFill" promptText="Matti" />
+                              <TextField fx:id="tfStdntLastname" layoutX="140.0" layoutY="100.0" onKeyReleased="#checkForFill" promptText="Meikäläinen" />
+                              <TextField fx:id="tfStdntNum" layoutX="140.0" layoutY="150.0" onKeyReleased="#checkForFill" promptText="1234567" />
+                              <TextField fx:id="tfStdntAddress" layoutX="406.0" layoutY="50.0" onKeyReleased="#checkForFill" promptText="Meikäläisenkatu 3" />
+                              <Button fx:id="btnSaveStdnt" disable="true" layoutX="190.0" layoutY="205.0" mnemonicParsing="false" onAction="#btnSaveStdntClicked" text="Tallenna" />
+                              <Label fx:id="lblSaved" layoutX="190.0" layoutY="280.0" text="Tallennettu!" visible="false" />
+                              <Label layoutX="15.0" layoutY="100.0" text="Opiskelijan sukunimi:" />
+                              <Button layoutX="40.0" layoutY="205.0" mnemonicParsing="false" onAction="#clearFields" text="Tyhjennä" />
+                              <Label layoutX="15.0" layoutY="15.0" text="Lisää uusi opiskelija rekisteriin:" />
+                              <Label layoutX="20.0" layoutY="272.0" />
+                              <DatePicker fx:id="dpStartingDate" layoutX="406.0" layoutY="96.0" />
+                              <Label layoutX="323.0" layoutY="100.0" text="Aloitus pvm." />
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </content></Tab>
+            <Tab text="Tietojen muutos">
+               <content>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Pane fx:id="background2" layoutY="-1.0" prefHeight="343.0" prefWidth="600.0">
+                           <children>
+                              <Label layoutX="15.0" layoutY="40.0" text="Minkä opiskelijan tietoja halutaan muuttaa?" />
+                              <Label layoutX="15.0" layoutY="15.0" text="Päivitä tietoja:" />
+                              <TextField fx:id="tfNewFirstname" layoutX="15.0" layoutY="130.0" promptText="Uusi nimi" />
+                              <TextField fx:id="tfNewLastname" layoutX="15.0" layoutY="160.0" promptText="Uusi Sukunimi" />
+                              <TextField fx:id="tfNewAddress" layoutX="15.0" layoutY="190.0" promptText="Uusi osoite" />
+                              <Button layoutX="190.0" layoutY="160.0" mnemonicParsing="false" onAction="#btnUpdateStdntPressed" text="Päivitä tiedot" />
+                              <DatePicker fx:id="dpNewStartingDate" layoutX="384.0" layoutY="81.0" visible="false" />
+                              <CheckBox fx:id="chkNewStartingDate" layoutX="384.0" layoutY="52.0" mnemonicParsing="false" onAction="#chkNewStartingDateActive" text="Vaihda aloitus pvm." />
+                              <ComboBox fx:id="cbStdntID" layoutX="15.0" layoutY="60.0" prefWidth="150.0" promptText="OPISKELIJA" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </content></Tab>
+            <Tab text="Tietojen poisto">
+               <content>
+                  <Pane fx:id="background3" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="277.0" prefWidth="600.0">
+                           <children>
+                              <Label layoutX="15.0" layoutY="15.0" text="Poista tietoja:" />
+                              <Label layoutX="15.0" layoutY="40.0" text="Minkä opikelijan tiedot haluat poistaa?" />
+                              <Button layoutX="185.0" layoutY="60.0" mnemonicParsing="false" onAction="#btnDeleteStdntPressed" text="Poista" />
+                              <Label fx:id="txtDeleteSuccess" layoutX="60.0" layoutY="100.0" text="Opiskelijan tiedot poistettu!" visible="false" />
+                              <ComboBox fx:id="cbStdntID2" layoutX="15.0" layoutY="60.0" prefWidth="150.0" promptText="OPISKELIJA" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </content></Tab>
+         </tabs>
+      </TabPane>
+      <MenuBar layoutY="4.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Tiedosto">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#closeClicked" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Muokkaa">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Taustaväri">
+                     <graphic>
+                        <ColorPicker fx:id="cpBackgroundColor" onAction="#cpBackgroundColorClicked" />
+                     </graphic>
+                  </MenuItem>
+               </items>
+          </Menu>
+          <Menu fx:id="helpMenuItem" mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#instructionsMenuItemClicked" text="Ohjeet" />
+                  <MenuItem mnemonicParsing="false" onAction="#aboutMenuItemClicked" text="Tietoja" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TextArea fx:id="taStudentsList" editable="false" layoutY="366.0" prefHeight="184.0" prefWidth="600.0" />
+      <Label layoutX="30.0" layoutY="345.0" text="Etunimi">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="130.0" layoutY="345.0" text="Sukunimi">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="215.0" layoutY="345.0" text="Opiskelija nro.">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="325.0" layoutY="345.0" text="Aloitus pvm.">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="465.0" layoutY="345.0" text="Osoite">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Separator layoutX="-2.0" layoutY="342.0" prefHeight="4.0" prefWidth="600.0" />
+   </children>
+</Pane>
